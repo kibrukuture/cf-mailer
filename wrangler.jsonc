@@ -1,0 +1,15 @@
+{
+  // Minimal Wrangler config for running the cf-mailer smoke Worker.
+  // This is intended for `wrangler dev --remote` so Workers runtime APIs (cloudflare:sockets) exist.
+  "name": "cf-mailer-smoke",
+  "main": "src/worker-demo.ts",
+  "compatibility_date": "2025-10-08",
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  }
+}
