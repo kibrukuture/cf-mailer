@@ -15,7 +15,8 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true,
+    "declaration": true,
+    "outDir": "dist",
 
     "strict": true,
     "skipLibCheck": true,
@@ -28,5 +29,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  "include": ["src"],
+  "exclude": ["test", "tests", "**/*.test.ts", "src/worker-demo.ts", "sec.ts"]
 }

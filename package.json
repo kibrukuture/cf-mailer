@@ -1,6 +1,6 @@
 {
   "name": "@tolbel/cf-mailer",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Workers-only SMTP mailer for Cloudflare.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,15 +16,20 @@
       "import": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target bun --format esm --external cloudflare:sockets",
-    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist --noEmit false",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist --noEmit false && tsc-alias",
     "prepublishOnly": "bun run build && bun run build:types && bun test",
+    "release": "rm -rf dist && bun run build && bun run build:types && npm publish",
     "test": "bun test"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260103.0",
     "@types/bun": "latest",
+    "tsc-alias": "^1.8.16",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
